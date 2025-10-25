@@ -20,10 +20,10 @@ jobs:
             - name: Install dependencies
               run: |
                     pip install -r requirements.txt
-                    pip install black flake8 pytest
+                    pip install black flake8 pytest pylint
 
             - name: run black
               run: black .
 
             - name: run pylint
-              run: pylint open_source_model tests
+              run: pylint .
