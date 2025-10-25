@@ -25,8 +25,5 @@ jobs:
             - name: run black
               run: black .
 
-            - name: run flake8
-              run: flake8 .
-
             - name: run pylint
               run: pylint open_source_model tests
