@@ -1,0 +1,32 @@
+name: Python CI
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Setup Python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: '3.9'
+            - name: Install dependencies
+              run: |
+                    pip install -r requirements.txt
+                    pip install black flake8 pytest
+
+            - name: run black
+              run: black .
+
+            - name: run flake8
+              run: flake8 .
+
+            - name: run pylint
+              run: pylint open_source_model tests
